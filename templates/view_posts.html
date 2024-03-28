@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: black ;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://wallpapercave.com/wp/wp4581490.jpg");
+            background-size: cover;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: black;
+            opacity: 2;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: red;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        small {
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CYBER SECURITY</h1>
+        <img align="right" src="https://image.freepik.com/free-vector/cyber-security-concept_23-2148539596.jpg" width="150" height="180">
+        {% for i in posts %}
+        <div class="post">
+        <h2>{{ i[1] }}</h2>
+        <p>{{ i[2] }}</p> 
+        <small>posted at: {{ i[3] }}</small>
+        <form method="POST" action="{{url_for('delete_post',id=i[0])}}" onsubmit="return confirm('Are you sure you want to delete this post?');">
+        <button>Delete</button>
+        </form>
+        <form method="GET" action="{{url_for('update_post',id=i[0])}}">
+        <button>Edit</button>
+        </form>
+    </div>
+        {% endfor %}
+</body>
+</html>
